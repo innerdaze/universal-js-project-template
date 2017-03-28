@@ -20,6 +20,9 @@ module.exports = {
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: process.env.NODE_ENV === 'production'
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
     })
   ],
   module: {
