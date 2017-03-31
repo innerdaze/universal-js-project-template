@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 
 export default class MyRootAppComponent extends Component {
 
@@ -7,7 +7,7 @@ export default class MyRootAppComponent extends Component {
     return (
       <div>
         <h1>{"It's a React page!"}</h1>
-        <p>nomnomnom</p>
+        <p>nom nom nom</p>
       </div>
     )
   }

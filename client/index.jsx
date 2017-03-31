@@ -1,18 +1,24 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-
-import MyRootAppComponent from './components/MyRootAppComponent.jsx'
+import {render} from 'react-dom'
+import {Provider} from 'react-redux'
+import {createStore} from 'redux'
 
 if (module.hot) {
-  module.hot.accept();
+  module.hot.accept()
 }
 
 function startApp() {
-  ReactDOM.render(
-    <MyRootAppComponent />
-    , document.getElementById('root'))
+  let store = createStore(/* INSERT REFERENCE TO TOP-LEVEL REDUCER */)
+
+  render(
+    <Provider store={store}>
+      <Root/>
+    </Provider>,
+    document.getElementById(/* INSERT ID OF ROOT ELEMENT IN INDEX.HTML (NOT BODY!) */)
+  )
 }
 
+/* CORDOVA???! 🙀 SECRETS AWAIT */
 if (window.cordova) {
   document.addEventListener('deviceready', startApp, false)
 } else {

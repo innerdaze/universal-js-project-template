@@ -7,11 +7,18 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, 'dist', 'cordova')
+    publicPath: '/'
+  },
+  resolve: {
+    alias: {
+      css: path.resolve(__dirname, 'client', 'assets', 'css')
+    }
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: path.join(__dirname, 'client', 'templates', 'index.cordova.ejs')
+      template: path.join(__dirname, 'client', 'templates', 'index.cordova.ejs'),
+      filename: 'index.html'
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: process.env.NODE_ENV === 'production'
@@ -28,6 +35,20 @@ module.exports = {
             presets: ['es2015', 'react']
           }
         }
+      },
+      {
+        test: /\.css$/,
+        include: /client\/assets\/css/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: true,
+              modules: true
+            }
+          }
+        ]
       }
     ]
   }
