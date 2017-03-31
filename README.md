@@ -6,7 +6,7 @@
 
 2. Clone this repo (replace "jeff" with your answer from Step 1)
 ```sh
--> git clone http://git.orbistech.co.uk:1955/lee.driscoll/universal-project-skeleton.git jeff
+-> git clone http://[THIS_REPO].git jeff
 -> cd jeff
 ```
 
