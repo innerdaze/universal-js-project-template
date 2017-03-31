@@ -1,3 +1,5 @@
+![Made By Orbis](https://img.shields.io/badge/lovingly%20crafted%20by-lee-ff69b4.svg) [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
+
 # Hej
 
 ## How to Use
