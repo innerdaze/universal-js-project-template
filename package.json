@@ -21,7 +21,7 @@
     "start:server:dev": "npm start",
     "start:client:dev": "node webpack.dev-server.js",
     "watch:server": "nodemon -w server -w package.json -x npm run start:server:dev",
-    "watch:client": "nodemon -w client -w webpack.web.js -w webpack.dev-server.js -e html -x npm run start:client:dev",
+    "watch:client": "nodemon -w client -w webpack.web.js -w webpack.dev-server.js -x npm run start:client:dev",
     "webpack-dashboard": "webpack-dashboard -- npm run watch:client",
     "postwatch:client": "npm run tunnel",
     "cordova:init": "cordova plugin add cordova-plugin-device; cordova plugin add cordova-plugin-whitelist",
