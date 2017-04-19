@@ -1,6 +1,10 @@
-![Made By Orbis](https://img.shields.io/badge/lovingly%20crafted%20by-lee-ff69b4.svg) [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
+![Made by Lee](https://img.shields.io/badge/lovingly%20crafted%20by-lee-ff69b4.svg) [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 
 # Hej
+
+## Roadmap to Production-Ready
+
+- Production configs
 
 ## How to Use
 
