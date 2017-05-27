@@ -1,5 +1,6 @@
 {
-  "name": "graphql-app",
+<<<<<<< HEAD
+  "name": "skeleton",
   "version": "1.0.0",
   "description": "",
   "main": "server/_app/index.js",
@@ -120,4 +121,16 @@
       }
     ]
   }
+=======
+  "name": "graphql-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+>>>>>>> first commit
 }
