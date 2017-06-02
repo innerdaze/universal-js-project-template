@@ -1,24 +1,26 @@
 import React from 'react'
-import {render} from 'react-dom'
-import {Provider} from 'react-redux'
-import {createStore} from 'redux'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import AppProvider from './components/AppProvider'
+import MyRootAppComponent from './components/MyRootAppComponent'
+import configureStore from './store'
 
-if (module.hot) {
-  module.hot.accept()
-}
-
-function startApp() {
-  let store = createStore(/* INSERT REFERENCE TO TOP-LEVEL REDUCER */)
+async function startApp() {
+  const store = await configureStore()
 
   render(
-    <Provider store={store}>
-      <Root/>
-    </Provider>,
-    document.getElementById(/* INSERT ID OF ROOT ELEMENT IN INDEX.HTML (NOT BODY!) */)
+    <AppProvider store={store}>
+      <MyRootAppComponent/>
+    </AppProvider>,
+    document.getElementById('root')
   )
+
+  if (module.hot) {
+    module.hot.accept()
+  }
 }
 
-/* CORDOVA???! 🙀 SECRETS AWAIT */
 if (window.cordova) {
   document.addEventListener('deviceready', startApp, false)
 } else {

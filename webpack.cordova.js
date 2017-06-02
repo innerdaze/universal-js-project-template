@@ -6,16 +6,22 @@ module.exports = {
   entry: path.join(__dirname, 'client', 'index.jsx'),
   output: {
     filename: 'bundle.js',
-    path: path.join(__dirname, 'dist', 'cordova')
-    publicPath: '/'
+    path: path.join(__dirname, 'dist', 'cordova'),
+    publicPath: ''
   },
   resolve: {
     alias: {
       css: path.resolve(__dirname, 'client', 'assets', 'css')
-    }
+    },
+    extensions: ['.js', '.jsx', '.json', '.css', '.scss']
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
+      }
+    }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'client', 'templates', 'index.cordova.ejs'),
       filename: 'index.html'
@@ -49,6 +55,28 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              includePaths: [
+                './node_modules'
+              // - UNCOMMENT the line below if using grommet
+              //  './node_modules/grommet/scss'
+              ]
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        include: /client\/assets\/fonts/,
+        loader: 'file-loader?name=client/assets/fonts/[name].[ext]'
       }
     ]
   }

@@ -1,22 +1,25 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const webpack = require('webpack')
-const webpackDevMiddleware = require('webpack-dev-middleware')
-const webpackHotMiddleware = require('webpack-hot-middleware')
-const WebpackDashboardPlugin = require('webpack-dashboard/plugin')
-
-const devBuildConfig = require('./webpack.web')
+import express from 'express'
+import bodyParser from 'body-parser'
+import webpack from 'webpack'
+import webpackDevMiddleware from 'webpack-dev-middleware'
+import webpackHotMiddleware from 'webpack-hot-middleware'
+import WebpackDashboardPlugin from 'webpack-dashboard/plugin'
+import webBuildConfig from './webpack.web'
+import cordovaBuildConfig from './webpack.cordova'
 
 const IP = process.env.IP || 'localhost'
 const PORT = process.env.PORT || 4000
 
 const server = express()
-const compiler = webpack(devBuildConfig)
+const config = process.env.NODE_TARGET === 'device' ? cordovaBuildConfig : webBuildConfig
+
+process.env.NODE_ENV = 'development'
+const compiler = webpack(config)
 
 compiler.apply(new WebpackDashboardPlugin())
 
 server.use(webpackDevMiddleware(compiler, {
-  publicPath: devBuildConfig.output.publicPath,
+  publicPath: config.output.publicPath,
   hot: true,
   historyApiFallback: true,
   stats: {
@@ -35,7 +38,7 @@ server.use(webpackHotMiddleware(compiler, {
 }))
 
 server.use(bodyParser.json())
-server.use(bodyParser.urlencoded({extended: true}))
+server.use(bodyParser.urlencoded({ extended: true }))
 
 server.listen(PORT, IP, err => {
   if (err) {
