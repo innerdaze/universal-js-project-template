@@ -39,11 +39,8 @@ class AppProvider extends Component {
 }
 
 AppProvider.propTypes = {
-  store: PropTypes.object.isRequired
-}
-
-AppProvider.defaultProps = {
-  store: {}
+  store: PropTypes.object.isRequired,
+  children: PropTypes.object.isRequired
 }
 
 export default AppProvider

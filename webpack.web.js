@@ -3,7 +3,13 @@ var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: ['babel-polyfill', path.join(__dirname, 'client', 'index.jsx')],
+  entry: [
+    'babel-polyfill',
+    'react-hot-loader/patch',
+    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
+    'webpack/hot/only-dev-server',
+    path.join(__dirname, 'client', 'index.jsx')
+  ],
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, 'dist', 'web'),
@@ -35,12 +41,12 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         include: /client/,
-        use: {
+        use: ['react-hot-loader/webpack', {
           loader: 'babel-loader',
           query: {
             presets: ['es2015', 'react']
           }
-        }
+        }]
       },
       {
         test: /\.css$/,

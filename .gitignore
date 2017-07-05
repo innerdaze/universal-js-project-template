@@ -2,3 +2,4 @@ node_modules/
 dist/
 cordova/plugins/
 cordova/platforms/
+npm-debug.log

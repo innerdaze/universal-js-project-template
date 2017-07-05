@@ -3,7 +3,10 @@ var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: path.join(__dirname, 'client', 'index.jsx'),
+  entry: [
+    'babel-polyfill',
+    path.join(__dirname, 'client', 'index.jsx')
+  ],
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, 'dist', 'cordova'),
